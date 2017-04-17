@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="eventlogger" class="exapmle.loggers.ConsoleEventLogger"/>
+
+    <bean id="fileEventLogger" class="exapmle.loggers.FileEventLogger" init-method="init">
+        <constructor-arg value="S:\git_rep\SpringCore\src\main\resources\result.txt"/>
+        <constructor-arg value="UTF-8"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="exapmle.loggers.CacheFileEventLogger" destroy-method="destroy" parent="fileEventLogger">
+        <constructor-arg value="2"/>
+    </bean>
+
+    <bean id="consoleEventLogger" class="exapmle.loggers.ConsoleEventLogger"/>
+
+    <bean id="combinedEventLogger" class="exapmle.loggers.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
