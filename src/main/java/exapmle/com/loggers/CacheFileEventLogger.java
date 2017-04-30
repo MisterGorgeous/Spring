@@ -1,6 +1,6 @@
-package exapmle.loggers;
+package exapmle.com.loggers;
 
-import exapmle.Event;
+import exapmle.com.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +19,7 @@ public class CacheFileEventLogger extends FileEventLogger {
         this.cache = new ArrayList<Event>(cacheSize);
         this.cacheSize = cacheSize;
     }
+
 
     public void logEvent(Event message) {
         cache.add(message);

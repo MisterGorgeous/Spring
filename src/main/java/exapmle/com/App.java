@@ -1,10 +1,10 @@
-package exapmle;
+package exapmle.com;
 
-import exapmle.loggers.EventLogger;
+import exapmle.AppConfig;
+import exapmle.com.aop.LoggingAspect;
+import exapmle.com.loggers.EventLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -35,27 +35,39 @@ public class App {
         }
 
         logger.logEvent(message);
+
     }
 
     public static void main(String[] args) {
 
-         //ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        //ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         // ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 
-        App app = (App) ctx.getBean("app");
-        Event event1 = (Event) ctx.getBean("event");
-        Event event2 = (Event) ctx.getBean("event");
+        ctx.register(AppConfig.class);
         ctx.refresh();
 
+
+
+       /* App app = (App) ctx.getBean("app");
+        Event event1 = (Event) ctx.getBean("event");
+        Event event2 = (Event) ctx.getBean("event");*/
+
+        App app = ctx.getBean(App.class);
+        Event event1 = ctx.getBean(Event.class);
+        Event event2 = ctx.getBean(Event.class);
+
+        LoggingAspect aspect = ctx.getBean(LoggingAspect.class);
+        System.out.println(aspect.printStats());
 
         event1.setMsg("Info message for 1");
         event2.setMsg("Error message for 1");
 
         app.logEvent(EventType.INFO, event1);
         app.logEvent(EventType.ERROR, event2);
-        //app.logEvent(null, event2);
+        app.logEvent(null, event2);
 
+        System.out.println(aspect.printStats());
         // ctx.close();
     }
 }

@@ -1,9 +1,8 @@
-package exapmle.loggers;
+package exapmle.com.loggers;
 
-import exapmle.Event;
+import exapmle.com.Event;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +18,12 @@ public class FileEventLogger implements EventLogger {
 
     //@Value("S:\git_rep\SpringCore\src\main\resources\result.txt")
     //@Value("${const.encoding}")
+    /*@Autowired
+    public FileEventLogger( String  filename,String encoding){
+        this.filename = filename;
+        this.encoding = encoding ;
+    }*/
+
     @Autowired
     public FileEventLogger( String  filename,String encoding){
         this.filename = filename;

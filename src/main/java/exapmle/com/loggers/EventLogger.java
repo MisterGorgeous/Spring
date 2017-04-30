@@ -1,6 +1,6 @@
-package exapmle.loggers;
+package exapmle.com.loggers;
 
-import exapmle.Event;
+import exapmle.com.Event;
 
 public interface EventLogger {
     void logEvent(Event message);

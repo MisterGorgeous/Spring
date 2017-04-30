@@ -1,4 +1,4 @@
-package exapmle;
+package exapmle.com;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,11 +10,11 @@ public class Client {
     private String fullName;
     private String greeting;
 
-    @Autowired
-    public Client(String id, String fullName) {
+
+   /* public Client(String id, String fullName) {
         this.id = id;
         this.fullName = fullName;
-    }
+    }*/
 
     public String getId() {
         return id;
@@ -25,6 +25,7 @@ public class Client {
     }
 
 
+    @Value("1")
     public void setId(String id) {
         this.id = id;
     }
@@ -35,6 +36,7 @@ public class Client {
         this.greeting = greeting;
     }
 
+    @Value("Jonh Smith")
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
