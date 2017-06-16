@@ -29,7 +29,7 @@ public class AppConfig {
 
     @Bean
     public FileEventLogger fileEventLogger() {
-        return new FileEventLogger("C:\\Users\\Siarhei_Slabadniak\\IdeaProjects\\OtherTasks\\SpringPractise\\src\\main\\resources\\result.txt", "UTF8");
+        return new FileEventLogger("D:\\IdeaProjects\\OtherTasks\\SpringPractise\\src\\main\\resources\\result.txt", "UTF8");
     }
 
     @Bean
@@ -39,7 +39,7 @@ public class AppConfig {
 
     @Bean
     public CacheFileEventLogger cacheFileEventLogger() {
-        return new CacheFileEventLogger("C:\\Users\\Siarhei_Slabadniak\\IdeaProjects\\OtherTasks\\SpringPractise\\src\\main\\resources\\result.txt", "UTF8", 2);
+        return new CacheFileEventLogger("D:\\IdeaProjects\\OtherTasks\\SpringPractise\\src\\main\\resources\\result.txt", "UTF8", 2);
     }
 
     @Bean
@@ -89,14 +89,14 @@ public class AppConfig {
         return new App(client, map);
     }
 
-    @Bean
+    /*@Bean
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(managerDataSource());
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public DriverManagerDataSource managerDataSource() {
         return new DriverManagerDataSource("${connection_properties.url}", "${connection_properties.username}", "${connection_properties.password}");
-    }
+    }*/
 
 }

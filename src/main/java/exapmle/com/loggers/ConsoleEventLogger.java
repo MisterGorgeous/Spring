@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ConsoleEventLogger implements EventLogger {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+    /*@Autowired
+    private JdbcTemplate jdbcTemplate;*/
 
     @Autowired
     public ConsoleEventLogger(){};
 
     public void logEvent(Event message) {
         System.out.println(message.toString());
-        jdbcTemplate.update("SELECT * From db(?,?)",message.toString());
+        //jdbcTemplate.update("SELECT * From db(?,?)",message.toString());
     }
 
 }
